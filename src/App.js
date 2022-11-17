@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import { Outlet, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Child from "./Child";
+//https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=989aeb61637efc432e57044c6c5bd577
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Outlet />}>
+          <Route index element={<Home />} />
+          <Route path="/:locationId" element={<Child />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
